@@ -41,18 +41,37 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>The HTML Presentation Framework</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
+					<h2>CSS Methodology &amp; Strategy</h2>
+          <h4>Part 1: Goals, Philosophy &amp; Methodology</h4>
 				</section>
 
 				<section>
-					<h2>Hello There</h2>
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
-					</p>
+					<h3>Why crafting good CSS is difficult</h3>
+
+            <ul>
+              <li>Global Scope</li>
+              <li>
+                <ul>
+                  <li>Style rules applied to <em>any</em> element matched by selectors</li>
+                </ul>
+              </li>
+              <li>
+                <ul>
+                  <li>Can be difficult to force styles to not be applied</li>
+                </ul>
+              </li>
+              <li>Specificity is confusing and hard to track, particularly among several developers</li>
+              <li>
+                <ul>
+                  <li>Nothing in the dev environment that proactively uses specificity</li>
+                  <li>No IDE tools advise about specificity in the coding environment</li>
+                  <li>No IDE tools track selectors located in separate sheets that may have collisions</li>
+                  <li>Browser dev tools display style overrides, but don’t provide specificity breakdown</li>
+                </ul>
+              </li>
+              <li>CSS has a very shallow set of functional requirements, so it is easy to write terrible code that still “works"</li>
+              <li>SASS adds additional features (nesting, variables, mixins, extends, functions) that make best practices more elusive</li>
+            </ul>
 				</section>
 
 				<!-- Example of nested vertical slides -->
