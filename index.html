@@ -46,11 +46,35 @@
         </section>
 
         <section>
+          <h1>What does "Cascading" mean?</h1>
+          <p>For this presentation, the cascade refers to the mechanism built into CSS that determines which rule should apply, according to the specificity hierarchy, when multiple rules have been defined.</p>
+        </section>
+
+        <section>
+          <h1>Goals for our CSS</h1>
+          <ul>
+            <li>Lowest possible specificity</li>
+            <li>Highest possible repeatability</li>
+            <li>Highest possible context for other developers</li>
+            <li>Intuitive organization / maintainable scope</li>
+            <li>Smallest compiled file size</li>
+          </ul>
+        </section>
+
+        <section>
           <h1>Why is CSS difficult?</h1>
           <h3>Global Scope</h3>
           <ul>
-            <li>Style rules applied to <em>any</em> element matched by selectors</li>
-            <li>Can be difficult to force styles to not be applied</li>
+            <li>Style rules apply to <em>any</em> element matched by selectors
+              <ul>
+                <li>Ex. global <code>&lt;h1&gt;-&lt;h6&gt;</code> styles</li>
+              </ul>
+            </li>
+            <li>Can be difficult to force styles to not be applied
+              <ul>
+                <li>Congrats, now you have to constantly override your global heading styles</li>
+              </ul>
+            </li>
           </ul>
         </section>
 
@@ -71,6 +95,7 @@
           <ul>
             <li>Your code works but it sucks - and CSS don't care</li>
             <li>There is no native method of error checking</li>
+            <li>SASS compiler will catch some errors, but can't fix bad code</li>
           </ul>
         </section>
 
@@ -87,9 +112,10 @@
         <section>
           <h1>What can we do about it?</h1>
           <ul>
-            <li>Understand Global Scope</li>
-            <li>Utilize Specificity</li>
-            <li>Targeted SASSiness</li>
+            <li>Proactively understand and utilize Global Scope &amp; Specificity</li>
+            <li>Use SASS to offset the native weaknesses of CSS</li>
+            <li>Utilize a linter to get code hints in your editor</li>
+          </ul>
         </section>
 
         <section>
@@ -123,12 +149,61 @@
             <li>Mixing CSS into Javascript bothers many developers</li>
             <li>Media queries are difficult in this context, and maintaining large/complex sites is difficult</li>
             <li>Some form of global stylesheet may still be unavoidable</li>
-            <li>Expect to see more of this, particularly because of React</li>
+            <li>Expect to see more of this, particularly because of React's popularity</li>
           </ul>
         </section>
 
         <section>
           <h2>I argue that Global Scope is beneficial because it encourages repeatable patterns versus one-offs.</h2>
+        </section>
+
+        <section>
+          <h1>Proactively Managing Specificity</h1>
+          <ul>
+            <li>Atomic or component-based web design is changing how we think specificity should be utilized
+              <ul>
+                <li>Older CSS guides on the internet have advocated higher specificity rules to target nested elements</li>
+              </ul>
+            </li>
+            <li>Specificity is a <strong>tool</strong> to be used carefully</li>
+            <li>Naming conventions / name-spacing can be utilized to make managing specificity much easier</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Concerning Preprocessors</h1>
+          <ul>
+            <li>An inevitable addition to modern development stacks</li>
+            <li>Add features which move CSS closer to programming languages
+              <ul>
+                <li>Variables, extends, mixins, functions</li>
+                <li>Mixin libraries can mitigate browser prefixes</li>
+              </ul>
+            </li>
+            <li>If not used carefully, preprocessor features can lead to specificity wars and bloated files</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>CSS Methodology</h1>
+          <h3>Specificity hierarchy:</h3>
+          <ul>
+            <li>inline: <code>&lt;h1 style="color: red;"&gt;</code></li>
+            <li>!important: <code>#foo {color: red !important;}</code></li>
+            <li>ID selector: <code>#foo {}</code></li>
+            <li>Class selector: <code>.bar {}</code></li>
+            <li>Element selector: <code>h1 {}</code></li>
+          </ul>
+          <div style="margin-top: 50px;">
+            <a href="http://specificity.keegan.st/" target="_blank">Specificity Calculator</a>
+          </div>
+          <div style="margin-top: 20px;">
+            <a href="examples/specificity-example.html" target="_blank">Example</a>
+          </div>
+        </section>
+
+        <section>
+          <h3>Every CSS rule should be written to keep specificy low &amp; to maximize maintainability</h3>
         </section>
 
         <!-- Example of nested vertical slides -->
