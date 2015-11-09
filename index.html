@@ -185,25 +185,336 @@
         </section>
 
         <section>
-          <h1>CSS Methodology</h1>
-          <h3>Specificity hierarchy:</h3>
-          <ul>
-            <li>inline: <code>&lt;h1 style="color: red;"&gt;</code></li>
-            <li>!important: <code>#foo {color: red !important;}</code></li>
-            <li>ID selector: <code>#foo {}</code></li>
-            <li>Class selector: <code>.bar {}</code></li>
-            <li>Element selector: <code>h1 {}</code></li>
-          </ul>
-          <div style="margin-top: 50px;">
+          <h1>CSS/SASS Methodology</h1>
+        </section>
+
+        <section>
+          <h1>Specificity Hierarchy</h1>
+          <pre>
+            <code class="hljs" data-trim contenteditable>
+// inline styling
+&lt;h1 style="color: red;"&gt;
+
+// !important
+h1 {color: red !important;}
+
+// ID selector
+#foo {}
+
+// Class selector
+.bar {}
+
+// Element selector
+h1 {}
+            </code>
+          </pre>
+          <div style="margin-top: 10px;">
             <a href="http://specificity.keegan.st/" target="_blank">Specificity Calculator</a>
           </div>
-          <div style="margin-top: 20px;">
+          <div style="margin-top: 10px;">
             <a href="examples/specificity-example.html" target="_blank">Example</a>
           </div>
         </section>
 
         <section>
-          <h3>Every CSS rule should be written to keep specificy low &amp; to maximize maintainability</h3>
+          <h1>Enterprise-level Best Practices</h1>
+          <p>Avoid using selectors that are tied to specific markup, even if specificity is low. If the markup changes, the styling breaks.</p>
+          <ul>
+            <li>Element selectors &amp; Nesting</li>
+          </ul>
+          <pre>
+            <code class="hljs" data-trim contenteditable>
+// Element selectors have the lowest specificity, but cause the most headaches.
+// Stop using them if possible
+.accordion {
+  section:target {
+    h2 {
+      a { color: red; }
+    }
+  }
+}
+            </code>
+          </pre>
+          <p>As a project grows and more devs have hands in the code, this will lead to maintenance disasters.</p>
+        </section>
+
+        <section>
+          <h1>Enterprise-level Best Practices</h1>
+          <p>Using IDs for selectors is discouraged.</p>
+          <ul>
+            <li>No specific benefit over class selectors</li>
+            <li>High specificity, difficult to override when needed</li>
+            <li>Conforming to standards, can only use once per page which fails in atomic design</li>
+            <li>Best used for programming hooks</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Enterprise-level Best Practices</h1>
+          <ul>
+            <li>Classes make for the best low-specificity selectors</li>
+            <li>Don't be afraid of long class names</li>
+          </ul>
+          <pre>
+            <code class="hljs" data-trim contenteditable>
+.accordion-vertical { some: styles; }
+.accordion-horizontal { some: styles; }
+.accordion-section { some: styles; }
+.accordion-title { some: styles; }
+.accordion-link { some: styles; }
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <section>
+            <h1>SASS Best Practices</h1>
+            <h3>Variables</h3>
+            <ul>
+              <li>Good variables describe their purpose rather than their value</li>
+              <li>Value-oriented variables useful as easily-remembered keywords</li>
+              <li>Passive Variables vs. Active Variables
+                <ul>
+                  <li>Passive variables store values and pass value to Active variables</li>
+                  <li>Active variables describe purpose and are used in rules</li>
+                  <li>Think "config" vs. "implementation"</li>
+                </ul>
+              </li>
+            </ul>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+$medium-blue: #336699;      // Bad variable - superfluous if design changes
+$border-color: #336699;     // Good variable - updates if design changes
+
+$brand-blue: #336699;       // Good variable - passively stores brand color
+$border-color: $brand-blue; // Good variable - actively defines border color
+              </code>
+            </pre>
+          </section>
+          <section>
+          <h1>SASS Best Practices</h1>
+          <h3>Variables</h3>
+          <ul>
+            <li>Should not re-declare a value that is already defined</li>
+            <li>CSS supports keywords for many values, particularly <a href="http://www.w3schools.com/cssref/css_colornames.asp" target="_blank">colors</a>
+            <li>Color variables should not be declared just for ease of use</li>
+          </ul>
+          <pre>
+            <code class="hljs" data-trim contenteditable>
+$color-black: #000; // Ease of use variable
+$color-white: #fff; // Ease of use variable
+
+h1 { color: $color-white; } // Still being used as one-offs for memorized values
+div { border-color: $color-black; } // Or because a Linter told us to use a variable
+
+h1 { color: white; } // We can just do this for many basic colors
+
+$brand-color: white; // Should we use keyword as passive variable?
+$title-color: $brand-color; // The active variable just wants a value
+h1 { color: $title-color; } // Yes, because it now indicates purpose
+            </code>
+          </pre>
+          <a href="http://www.w3schools.com/cssref/css_colornames.asp">CSS Color Keywords</a>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>SASS Best Practices</h1>
+            <h3>Nesting</h3>
+            <ul>
+              <li>Great for visualizing mark up hierarchy</li>
+              <li>Locks the developer into styling specifically to markup</li>
+            </ul>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+// If this markup hierarchy changes at all, the styling will break entirely
+.accordion {
+  section:target {
+    h2.title {
+      a { color:red; padding:0;}
+    }
+  }
+}
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h1>SASS Best Practices</h1>
+            <h3>Nesting</h3>
+            <ul>
+              <li>Can result in confusing code</li>
+            </ul>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+.tabs {
+  overflow: hidden;
+
+  .tab {
+    background: red;
+
+    &:hover {
+      background: white;
+    }
+
+    .tab-link {
+      color: white;
+
+      @at-root #{selector-replace(&, '.tab', '.tab:hover')} {
+        color: red;
+      }
+    }
+  }
+}
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h1>SASS Best Practices</h1>
+            <h3>Nesting</h3>
+            <ul>
+              <li>Subtle difference can cause specificity issues</li>
+            </ul>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+// This is repetitive and can scale out of control
+div.content {
+  h2 {
+    a { color: red; }
+  }
+}
+div.sidebar {
+  h2 {
+    a { color: blue; }
+  }
+}
+
+// This is more efficient and repeatable
+.content-link { color: red; }
+.sidebar-link { color: blue; }
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h1>SASS Best Practices</h1>
+            <h3>Nesting</h3>
+            <ul>
+              <li>Use classes for objects</li>
+              <li>Use nesting for states and pseudo-classes</li>
+            </ul>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+div.content {
+  h2 {
+    a { some: styles; }
+  }
+}
+
+// Becomes
+.content { some: styles; }
+.content-title { some: styles; }
+.internal-link { some: styles;
+  &:after { some: icon; }
+  &:hover { some: hover-styles; }
+}
+              </code>
+            </pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>SASS Best Practices</h1>
+            <h3>Mixins</h3>
+            <ul>
+              <li>Best use of global scope and specificity to achieve repeatability</li>
+              <li>Can utilize arguments for dynamic style values</li>
+              <li>Very powerful when used with variables</li>
+            </ul>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+// We can create a border style mixin where the border color can be changed once
+// And applied to every object on the site that uses this border style
+$brand-color: orange;
+@mixin border($radius: 4px, $color: $brand-color, $width: 2px, $style: solid) {
+  border-radius: $radius;
+  border-color: $color;
+  border-width: $width;
+  border-style: $style;
+}
+
+.my-class {
+  @include border;
+}
+
+// Or we can declare values to create one-off styling instances
+.my-alt-class {
+  @include border(5px, white, 3px, dotted)
+}
+              </code>
+            </pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>SASS Best Practices>
+            <h3>Extends</h3>
+            <p>An example of what @extend does</p>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+.selector-A {
+  @extend .selector-B;
+  unicorn: true;
+}
+
+.selector-B {
+  rainbow: true;
+}
+
+// Results in
+.selector-A {
+  unicorn: true;
+}
+
+.selector-B,
+.selector-A {
+  rainbow: true;
+}
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h1>SASS Best Practices</h1>
+            <h3>Extends</h3>
+            <ul>
+              <li>Cannot be used within <code>@media</code> queries</li>
+              <li>Compound extends are unpredictable.</li>
+              <li>Safest to use when you <em>know</em> a selector is only used once in an entire stylesheet</li>
+            </ul>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+%clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+              </code>
+            </pre>
+            <ul>
+              <li>Can result in <a href="http://pastebin.com/Jy9PqFTy" target="_blank">ludicrously long selectors</a></li>
+            </ul>
+          </section>
+          <section>
+            <h1>SASS Best Practices</h1>
+            <h3>Extends</h3>
+            <ul>
+              <li>Mixins are more transparent to later developers</li>
+              <li>Mixins do not result in heavier code after Gzip compression</li>
+              <li>Mixins can pass along arguments for more dynamic style applications</li>
+              <li>Mixins allow us to more intentionally control global scope and specificity</li>
+            </ul>
+          </section>
         </section>
 
         <!-- Example of nested vertical slides -->
