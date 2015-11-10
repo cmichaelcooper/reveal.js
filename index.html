@@ -1,411 +1,582 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-		<title>reveal.js – The HTML Presentation Framework</title>
+    <title>CSS: Methodology &amp; Strategy</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+    <meta name="description" content="CSS: Methodology &amp; Strategy">
+    <meta name="author" content="C. Michael Cooper">
 
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css" id="theme">
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
 
-	<body>
+  <body>
 
-		<div class="reveal">
+    <div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h1>Reveal.js</h1>
-					<h3>The HTML Presentation Framework</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
-				</section>
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>CSS: Methodology &amp; Strategy</h1>
+          <h3>Part 1: Goals, Philosophy &amp; Methodology</h3>
+        </section>
 
-				<section>
-					<h2>Hello There</h2>
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
-					</p>
-				</section>
+        <section>
+          <h1>What does "Cascading" mean?</h1>
+          <p>For this presentation, the cascade refers to the mechanism built into CSS that determines which rule should apply, according to the specificity hierarchy, when multiple rules have been defined.</p>
+        </section>
 
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
+        <section>
+          <h1>Goals for our CSS</h1>
+          <ul>
+            <li>Low specificity</li>
+            <li>High repeatability</li>
+            <li>High context for other developers</li>
+            <li>Intuitive organization / maintainable scope</li>
+            <li>Smallest compiled file size</li>
+          </ul>
+        </section>
 
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
-				</section>
+        <section>
+          <h1>Why is CSS difficult?</h1>
+          <h3>Global Scope</h3>
+          <ul>
+            <li>Style rules apply to <em>any</em> element matched by selectors
+              <ul>
+                <li>Ex. global <code>&lt;h1&gt;-&lt;h6&gt;</code> styles</li>
+              </ul>
+            </li>
+            <li>Can be difficult to force styles to not be applied
+              <ul>
+                <li>Congrats, now you have to constantly override your global heading styles</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
 
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
+        <section>
+          <h1>Why is CSS difficult?</h1>
+          <h3>Specificity</h3>
+          <ul>
+            <li>Treated as a consequence rather than a tool</li>
+            <li>IDE tools do not advise about specificity</li>
+            <li>IDE tools do not track competing selectors</li>
+            <li>Browser dev tools display style overrides, but don’t calculate specificity</li>
+          </ul>
+        </section>
 
-				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
-				</section>
+        <section>
+          <h1>Why is CSS difficult?</h1>
+          <h3>Shallow Functional Requirements<br />&amp; No Feedback Mechanism</h3>
+          <ul>
+            <li>Your code works but it sucks - and CSS don't care</li>
+            <li>There is no native method of error checking</li>
+            <li>SASS compiler will catch some errors, but can't fix bad code</li>
+          </ul>
+        </section>
 
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
+        <section>
+          <h1>Why is CSS difficult?</h1>
+          <h3>SASS Adds Complexity</h3>
+          <ul>
+            <li>Nesting can result in gross selectors and specificity overload</li>
+            <li>Variables are easy to misuse</li>
+            <li>Extends are unpredictable</li>
+          </ul>
+        </section>
 
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+        <section>
+          <h1>What can we do about it?</h1>
+          <ul>
+            <li>Proactively understand and utilize Global Scope &amp; Specificity</li>
+            <li>Use SASS to offset the native weaknesses of CSS</li>
+            <li>Utilize a linter to get code hints in your editor</li>
+          </ul>
+        </section>
 
-						```
-						<section data-markdown>
-						  ## Markdown support
+        <section>
+          <h1>Understanding<br />Global Scope</h1>
+          <h3>Why is Global Scope bad?</h3>
+          <ul>
+            <li>Similar objects in different contexts can start specificity wars</li>
+            <li>Difficult to nail down where a style is applied on a large site</li>
+            <li>Difficult or impossible to clean out unused styles</li>
+          </ul>
+        </section>
 
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
+        <section>
+          <h1>Understanding<br />Global Scope</h1>
+          <h3>Why is Global Scope good?</h3>
+          <ul>
+            <li>Can add new views and styles work (as long as markup conforms)</li>
+            <li>Reusability/repeatability - describe patterns that can appear anywhere on one or more sites</li>
+            <li>Can maintain a collection of style descriptions in the abstract, without the need for specific application</li>
+            <li>Can create portable patterns that can be migrated to any project</li>
+          </ul>
+        </section>
 
-				<section>
-					<section id="fragments">
-						<h2>Fragments</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
+        <section>
+          <h1>Understanding<br />Global Scope</h1>
+          <h3>Should we resist Global Scope?</h3>
+          <p>Modern frameworks have started exploring approaches that achieve local scope with CSS, typically by applying styles inline with javascript.</p>
+          <h4>Notable Points</h4>
+          <ul>
+            <li>On a truly component-based, modular website this might eliminate global scope and specificity concerns</li>
+            <li>Mixing CSS into Javascript bothers many developers</li>
+            <li>Media queries are difficult in this context, and maintaining large/complex sites is difficult</li>
+            <li>Some form of global stylesheet may still be unavoidable</li>
+            <li>Expect to see more of this, particularly because of React's popularity</li>
+          </ul>
+        </section>
 
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's different types of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-					</section>
-				</section>
+        <section>
+          <h2>I argue that Global Scope is beneficial because it encourages creating repeatable patterns versus one-off solutions.</h2>
+        </section>
 
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
+        <section>
+          <h1>Proactively Managing Specificity</h1>
+          <ul>
+            <li>Specificity is a <strong>tool</strong> to be used carefully</li>
+            <li>Atomic or component-based web design is changing how we think specificity should be utilized
+              <ul>
+                <li>Older CSS guides on the internet have advocated higher specificity rules to target nested elements</li>
+                <li>Newer approaches advocate un-nested, class-driven, low specificity css modules</li>
+              </ul>
+            </li>
+            <li>Naming conventions / name-spacing can be utilized to make managing specificity much easier</li>
+          </ul>
+        </section>
 
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-					</p>
-				</section>
+        <section>
+          <h1>Concerning Preprocessors</h1>
+          <ul>
+            <li>An inevitable addition to modern development stacks</li>
+            <li>Add features which move CSS closer to programming languages
+              <ul>
+                <li>Variables, extends, mixins, functions</li>
+                <li>Mixin libraries can mitigate browser prefixes</li>
+              </ul>
+            </li>
+            <li>If not used carefully, preprocessor features can lead to specificity wars and bloated files</li>
+          </ul>
+        </section>
 
-				<section>
-					<section data-background="#dddddd">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code class="hljs">&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Tiled Backgrounds</h2>
-						<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-							<h2>Video Backgrounds</h2>
-							<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-						</div>
-					</section>
-					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-						<h2>... and GIFs!</h2>
-					</section>
-				</section>
+        <section>
+          <h1>CSS/SASS Methodology</h1>
+        </section>
 
-				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-					</p>
-					<pre><code class="hljs">Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-				</section>
+        <section>
+          <h1>Specificity Hierarchy</h1>
+          <pre>
+            <code class="hljs" data-trim contenteditable>
+// inline styling
+&lt;h1 style="color: red;"&gt;
 
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						You can override background transitions per-slide.
-					</p>
-					<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-				</section>
+// !important
+h1 {color: red !important;}
 
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code class="hljs" data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
+// ID selector
+#foo {}
 
-    var nodes = document.querySelectorAll( selector );
+// Class selector
+.bar {}
 
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
+// Element selector
+h1 {}
+            </code>
+          </pre>
+          <div style="margin-top: 10px;">
+            <a href="http://specificity.keegan.st/" target="_blank">Specificity Calculator</a>
+          </div>
+          <div style="margin-top: 10px;">
+            <a href="examples/specificity-example.html" target="_blank">Example</a>
+          </div>
+        </section>
 
-      if( !node.className ) {
-        node.className += ' roll';
+        <section>
+          <h1>Enterprise-level Best Practices</h1>
+          <p>Avoid using selectors that are tied to specific markup, even if specificity is low. If the markup changes, the styling breaks.</p>
+          <ul>
+            <li>Element selectors &amp; Nesting</li>
+          </ul>
+          <pre>
+            <code class="hljs" data-trim contenteditable>
+// Element selectors have the lowest specificity, but cause the most headaches.
+// Stop using them if possible
+.accordion {
+  section:target {
+    h2 {
+      a { color: red; }
+    }
+  }
+}
+            </code>
+          </pre>
+          <p>As a project grows and more devs have hands in the code, this will lead to painful maintenance.</p>
+        </section>
+
+        <section>
+          <h1>Enterprise-level Best Practices</h1>
+          <p>Using IDs for selectors is discouraged.</p>
+          <ul>
+            <li>No specific benefit over class selectors</li>
+            <li>High specificity, difficult to override when needed</li>
+            <li>Conforming to standards, can only use once per page which fails in atomic design</li>
+            <li>Best used for programming hooks</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Enterprise-level Best Practices</h1>
+          <ul>
+            <li>Classes make for the best low-specificity selectors</li>
+            <li>Don't be afraid of long class names</li>
+          </ul>
+          <pre>
+            <code class="hljs" data-trim contenteditable>
+.accordion-vertical { some: styles; }
+.accordion-horizontal { some: styles; }
+.accordion-section { some: styles; }
+.accordion-title { some: styles; }
+.accordion-link { some: styles; }
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <section>
+            <h1>SASS Best Practices</h1>
+            <h3>Variables</h3>
+            <ul>
+              <li>Good variables describe their purpose rather than their value</li>
+              <li>But value-oriented variables are useful as easily-remembered keywords</li>
+              <li>Passive Variables vs. Active Variables
+                <ul>
+                  <li>Passive variables store values and pass value to Active variables</li>
+                  <li>Active variables describe purpose and are used in rules</li>
+                  <li>Think "config" vs. "implementation"</li>
+                </ul>
+              </li>
+            </ul>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+$medium-blue: #336699;      // Bad variable - superfluous if design changes
+$border-color: #336699;     // Good variable - updates if design changes
+
+$brand-blue: #336699;       // Good variable - passively stores brand color
+$border-color: $brand-blue; // Good variable - actively defines border color
+              </code>
+            </pre>
+          </section>
+          <section>
+          <h1>SASS Best Practices</h1>
+          <h3>Variables</h3>
+          <ul>
+            <li>Should not re-declare a value that is already defined</li>
+            <li>CSS supports keywords for many values, particularly <a href="http://www.w3schools.com/cssref/css_colornames.asp" target="_blank">colors</a>
+            <li>Color variables should not be declared just for ease of use</li>
+          </ul>
+          <pre>
+            <code class="hljs" data-trim contenteditable>
+$color-black: #000; // Ease of use variable
+$color-white: #fff; // Ease of use variable
+
+h1 { color: $color-white; } // Still being used as one-offs for memorized values
+div { border-color: $color-black; } // Or because a Linter told us to use a variable
+
+h1 { color: white; } // We can just do this for many basic colors
+
+$brand-color: white; // Should we use keyword as passive variable?
+$title-color: $brand-color; // The active variable just wants a value
+h1 { color: $title-color; } // Yes, because it now indicates purpose
+            </code>
+          </pre>
+          <a href="http://www.w3schools.com/cssref/css_colornames.asp">CSS Color Keywords</a>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>SASS Best Practices</h1>
+            <h3>Nesting</h3>
+            <ul>
+              <li>Great for visualizing mark up hierarchy</li>
+              <li>Locks the developer into styling specifically to markup</li>
+            </ul>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+// If this markup hierarchy changes at all, the styling will break entirely
+.accordion {
+  section:target {
+    h2.title {
+      a { color:red; padding:0;}
+    }
+  }
+}
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h1>SASS Best Practices</h1>
+            <h3>Nesting</h3>
+            <ul>
+              <li>Can result in confusing code</li>
+            </ul>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+.tabs {
+  overflow: hidden;
+
+  .tab {
+    background: red;
+
+    &:hover {
+      background: white;
+    }
+
+    .tab-link {
+      color: white;
+
+      @at-root #{selector-replace(&, '.tab', '.tab:hover')} {
+        color: red;
       }
     }
   }
 }
-					</code></pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h1>SASS Best Practices</h1>
+            <h3>Nesting</h3>
+            <ul>
+              <li>Subtle difference can cause specificity issues</li>
+            </ul>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+// This is repetitive and can scale out of control
+div.content {
+  h2 {
+    a { color: red; }
+  }
+}
+div.sidebar {
+  h2 {
+    a { color: blue; }
+  }
+}
 
-				<section>
-					<h2>Marvelous List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
+// This is more efficient and repeatable
+.content-link { color: red; }
+.sidebar-link { color: blue; }
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h1>SASS Best Practices</h1>
+            <h3>Nesting</h3>
+            <ul>
+              <li>Use classes for objects</li>
+              <li>Use nesting for states and pseudo-classes</li>
+            </ul>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+div.content {
+  h2 {
+    a { some: styles; }
+  }
+}
 
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
+// Becomes
+.content { some: styles; }
+.content-title { some: styles; }
+.internal-link { some: styles;
+  &:after { some: icon; }
+  &:hover { some: hover-styles; }
+}
+              </code>
+            </pre>
+          </section>
+        </section>
 
-				<section>
-					<h2>Tabular Tables</h2>
-					<table>
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Value</th>
-								<th>Quantity</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Apples</td>
-								<td>$1</td>
-								<td>7</td>
-							</tr>
-							<tr>
-								<td>Lemonade</td>
-								<td>$2</td>
-								<td>18</td>
-							</tr>
-							<tr>
-								<td>Bread</td>
-								<td>$3</td>
-								<td>2</td>
-							</tr>
-						</tbody>
-					</table>
-				</section>
+        <section>
+          <section>
+            <h1>SASS Best Practices</h1>
+            <h3>Mixins</h3>
+            <ul>
+              <li>Best use of global scope and specificity to achieve repeatability</li>
+              <li>Can utilize arguments for dynamic style values</li>
+              <li>Very powerful when used with variables</li>
+            </ul>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+// We can create a border style mixin where the border color can be changed once
+// And applied to every object on the site that uses this border style
+$brand-color: orange;
+@mixin border($radius: 4px, $color: $brand-color, $width: 2px, $style: solid) {
+  border-radius: $radius;
+  border-color: $color;
+  border-width: $width;
+  border-style: $style;
+}
 
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
+.my-class {
+  @include border;
+}
 
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
+// Or we can declare values to create one-off styling instances
+.my-alt-class {
+  @include border(5px, white, 3px, dotted)
+}
+              </code>
+            </pre>
+          </section>
+        </section>
 
-				<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
+        <section>
+          <section>
+            <h1>SASS Best Practices>
+            <h3>Extends</h3>
+            <p>An example of what @extend does</p>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+.selector-A {
+  @extend .selector-B;
+  unicorn: true;
+}
 
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
+.selector-B {
+  rainbow: true;
+}
 
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-					<iframe src="https://www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-				</section>
+// Results in
+.selector-A {
+  unicorn: true;
+}
 
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the page background.
-					</p>
-				</section>
+.selector-B,
+.selector-A {
+  rainbow: true;
+}
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h1>SASS Best Practices</h1>
+            <h3>Extends</h3>
+            <ul>
+              <li>Cannot be used within <code>@media</code> queries</li>
+              <li>Compound extends are unpredictable.</li>
+              <li>Safest to use when you <em>know</em> a selector is only used once in an entire stylesheet</li>
+            </ul>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+%clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+              </code>
+            </pre>
+            <ul>
+              <li>Can result in <a href="http://pastebin.com/Jy9PqFTy" target="_blank">ludicrously long selectors</a></li>
+            </ul>
+          </section>
+          <section>
+            <h1>SASS Best Practices</h1>
+            <h3>Extends</h3>
+            <ul>
+              <li>Mixins are more transparent to later developers</li>
+              <li>Mixins do not result in heavier code after Gzip compression</li>
+              <li>Mixins can pass along arguments for more dynamic style applications</li>
+              <li>Mixins allow us to more intentionally control global scope and specificity</li>
+            </ul>
+          </section>
+        </section>
 
-				<section data-state="customevent">
-					<h2>State Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
+        <section>
+          <h1>Review</h1>
+          <ul>
+            <li>Proactively utilize global scope and specificity as tools in your kit</li>
+            <li>Use classes for low-specificity styling rather than element selectors or IDs</li>
+            <li>Avoid nesting to prevent markup-dependent styles</li>
+            <li>Use SASS variables carefully to provide flexibility and maintainability</li>
+            <li>Prefer SASS mixins over extends to keep code transparent and multi-dev friendly</li>
+          </ul>
+        </section>
 
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
-				</section>
+        <section>
+          <h1>Next Time...</h1>
+          <ul>
+            <li>Rebuild the accordion from the bottom up</li>
+            <li>We will learn about specific CSS methods that focus on managing scope, specificity and creating portable modules
+              <ul>
+                <li>OOCSS, SMACCS, BEM and Atomic</li>
+              </ul>
+            </li>
+            <li>Additional focus on SASS and how to organize and structure a project to maximize maintainability</li>
+          </ul>
+        </section>
 
-				<section>
-					<h2>Much more</h2>
-					<ul>
-						<li>Right-to-left support</li>
-						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-					</ul>
-				</section>
+        <section>
+          <h1>Questions?</h1>
+        </section>
 
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
-				</section>
+      </div>
 
-			</div>
+    </div>
 
-		</div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+    <script>
 
-		<script>
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
 
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
+    </script>
 
-		</script>
-
-	</body>
+  </body>
 </html>
