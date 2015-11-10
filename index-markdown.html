@@ -67,7 +67,7 @@
         <section data-markdown>
           # Why is CSS difficult?
           ### Global Scope
-          * Style rules apply to <em>any</em> element matched by selectors
+          * Style rules apply to _any_ element matched by selectors
             * Ex. global h1-h6 styles
           * Can be difficult to force styles to not be applied
               * Congrats, now you have to constantly override your global heading styles
@@ -86,7 +86,7 @@
         <!-- Slide 6 -->
         <section data-markdown>
           # Why is CSS difficult?
-          ### Shallow Functional Requirements<br />&amp; No Feedback Mechanism
+          ### Shallow Functional Requirements &amp; No Feedback Mechanism
           * Your code works but it sucks - and CSS don't care
           * There is no native method of error checking
           * SASS compiler will catch some errors, but can't fix bad code
@@ -439,9 +439,9 @@ $brand-color: orange;
         <section data-markdown>
           # SASS Best Practices
           ### Extends
-          * Cannot be used within <code>@media</code> queries
+          * Cannot be used within media queries
           * Compound extends are unpredictable.
-          * Safest to use when you <em>know</em> a selector is only used once in an entire stylesheet
+          * Safest to use when you _know_ a selector is only used once in an entire stylesheet
 
           ```
   %clearfix::after {
