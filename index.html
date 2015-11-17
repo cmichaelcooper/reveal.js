@@ -46,61 +46,44 @@
         </section>
 
         <section>
-          <h1>What does "Cascading" mean?</h1>
-          <p>For this presentation, the cascade refers to the mechanism built into CSS that determines which rule should apply, according to the specificity hierarchy, when multiple rules have been defined.</p>
-        </section>
-
-        <section>
           <h1>Goals for our CSS</h1>
           <ul>
             <li>Low specificity</li>
             <li>High repeatability</li>
             <li>High context for other developers</li>
-            <li>Intuitive organization / maintainable scope</li>
-            <li>Smallest compiled file size</li>
+            <li>Intuitive organization / maintainability</li>
+            <li>Optimized compiled file size</li>
           </ul>
         </section>
 
         <section>
-          <h1>Why is CSS difficult?</h1>
-          <h3>Global Scope</h3>
-          <ul>
-            <li>Style rules apply to <em>any</em> element matched by selectors
-              <ul>
-                <li>Ex. global <code>&lt;h1&gt;-&lt;h6&gt;</code> styles</li>
-              </ul>
-            </li>
-            <li>Can be difficult to force styles to not be applied
-              <ul>
-                <li>Congrats, now you have to constantly override your global heading styles</li>
-              </ul>
-            </li>
-          </ul>
+          <h1>CSS is Difficult</h1>
         </section>
 
         <section>
-          <h1>Why is CSS difficult?</h1>
-          <h3>Specificity</h3>
+          <h3><strong>Global Scope</strong> &amp; <strong>Specificity</strong></h3>
           <ul>
             <li>Treated as a consequence rather than a tool</li>
-            <li>IDE tools do not advise about specificity</li>
-            <li>IDE tools do not track competing selectors</li>
-            <li>Browser dev tools display style overrides, but don’t calculate specificity</li>
+            <li>Browsers &amp; IDE tools don't provide insight
+              <ul>
+                <li>IDE tools do not advise about specificity or competing selectors</li>
+                <li>Browser dev tools display style overrides, but don't calculate specificity</li>
+              </ul>
+            </li>
+            <li>Styles must be overwritten (added) to be removed (subtracted)</li>
           </ul>
         </section>
 
         <section>
-          <h1>Why is CSS difficult?</h1>
-          <h3>Shallow Functional Requirements<br />&amp; No Feedback Mechanism</h3>
+          <p>Shallow Functional Requirements &amp; No Feedback Mechanism</p>
           <ul>
-            <li>Your code works but it sucks - and CSS don't care</li>
+            <li>Sloppy, lazy, convoluted or absurd code works - but it sucks</li>
             <li>There is no native method of error checking</li>
-            <li>SASS compiler will catch some errors, but can't fix bad code</li>
+            <li>SASS compiler will catch compilation errors, but can't fix sloppy code</li>
           </ul>
         </section>
 
         <section>
-          <h1>Why is CSS difficult?</h1>
           <h3>SASS Adds Complexity</h3>
           <ul>
             <li>Nesting can result in gross selectors and specificity overload</li>
@@ -110,27 +93,20 @@
         </section>
 
         <section>
-          <h1>What can we do about it?</h1>
+          <h1>Global Scope in CSS</h1>
+        </section>
+
+        <section>
+          <h3>The bad:</h3>
           <ul>
-            <li>Proactively understand and utilize Global Scope &amp; Specificity</li>
-            <li>Use SASS to offset the native weaknesses of CSS</li>
-            <li>Utilize a linter to get code hints in your editor</li>
+            <li>Unrelated styles collide and result in gross overrides</li>
+            <li>Developers step on each other's toes as projects age</li>
+            <li>Unused styles can interfere</li>
           </ul>
         </section>
 
         <section>
-          <h1>Understanding<br />Global Scope</h1>
-          <h3>Why is Global Scope bad?</h3>
-          <ul>
-            <li>Similar objects in different contexts can start specificity wars</li>
-            <li>Difficult to nail down where a style is applied on a large site</li>
-            <li>Difficult or impossible to clean out unused styles</li>
-          </ul>
-        </section>
-
-        <section>
-          <h1>Understanding<br />Global Scope</h1>
-          <h3>Why is Global Scope good?</h3>
+          <h3>The good:</h3>
           <ul>
             <li>Can add new views and styles work (as long as markup conforms)</li>
             <li>Reusability/repeatability - describe patterns that can appear anywhere on one or more sites</li>
@@ -140,9 +116,8 @@
         </section>
 
         <section>
-          <h1>Understanding<br />Global Scope</h1>
-          <h3>Should we resist Global Scope?</h3>
-          <p>Modern frameworks have started exploring approaches that achieve local scope with CSS, typically by applying styles inline with javascript.</p>
+          <h3>The future?</h3>
+          <p>Modern frameworks achieve local scope, typically by applying styles inline with javascript.</p>
           <h4>Notable Points</h4>
           <ul>
             <li>On a truly component-based, modular website this might eliminate global scope and specificity concerns</li>
