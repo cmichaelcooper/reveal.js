@@ -42,26 +42,35 @@
       <div class="slides">
         <section>
           <h1>CSS: Methodology &amp; Strategy</h1>
-          <h3>Part 1: Goals, Philosophy &amp; Methodology</h3>
         </section>
 
         <section>
-          <h1>Goals for our CSS</h1>
+          <h1>And now, My Evil Plan...</h1>
+        </section>
+
+        <section>
+          <h1>Success depends on two ideas:</h1>
           <ul>
-            <li>Low specificity</li>
-            <li>High repeatability</li>
-            <li>High context for other developers</li>
-            <li>Intuitive organization / maintainability</li>
-            <li>Optimized compiled file size</li>
+            <li>Maximize CSS Repeatability
+              <ul>
+                <li>Reusable components. Legos.</li>
+              </ul>
+            </li>
+            <li>Minimize Unplanned Collisions
+              <ul>
+                <li>Self-contained modules - don't spread dependencies</li>
+              </ul>
+            </li>
           </ul>
         </section>
 
         <section>
           <h1>CSS is Difficult</h1>
+          <h3>We have some challenges to overcome</h3>
         </section>
 
         <section>
-          <h3><strong>Global Scope</strong> &amp; <strong>Specificity</strong></h3>
+          <h1><strong>Global Scope</strong> &amp; <strong>Specificity</strong></h1>
           <ul>
             <li>Treated as a consequence rather than a tool</li>
             <li>Browsers &amp; IDE tools don't provide insight
@@ -75,7 +84,7 @@
         </section>
 
         <section>
-          <p>Shallow Functional Requirements &amp; No Feedback Mechanism</p>
+          <h1>Shallow Functional Requirements</h1>
           <ul>
             <li>Sloppy, lazy, convoluted or absurd code works - but it sucks</li>
             <li>There is no native method of error checking</li>
@@ -84,7 +93,7 @@
         </section>
 
         <section>
-          <h3>SASS Adds Complexity</h3>
+          <h1>SASS Adds Complexity</h1>
           <ul>
             <li>Nesting can result in gross selectors and specificity overload</li>
             <li>Variables are easy to misuse</li>
@@ -97,18 +106,18 @@
         </section>
 
         <section>
-          <h3>The bad:</h3>
+          <h1>The bad:</h1>
           <ul>
             <li>Unrelated styles collide and result in gross overrides</li>
             <li>Developers step on each other's toes as projects age</li>
-            <li>Unused styles can interfere</li>
+            <li>Unused styles can interfere with current ones</li>
           </ul>
         </section>
 
         <section>
-          <h3>The good:</h3>
+          <h1>The good:</h1>
           <ul>
-            <li>Can add new views and styles work (as long as markup conforms)</li>
+            <li>New views and styles work automatically (as long as markup conforms)</li>
             <li>Reusability/repeatability - describe patterns that can appear anywhere on one or more sites</li>
             <li>Can maintain a collection of style descriptions in the abstract, without the need for specific application</li>
             <li>Can create portable patterns that can be migrated to any project</li>
@@ -116,52 +125,46 @@
         </section>
 
         <section>
-          <h3>The future?</h3>
-          <p>Modern frameworks achieve local scope, typically by applying styles inline with javascript.</p>
-          <h4>Notable Points</h4>
+          <h1>Is Javascript The Future?</h1>
+          <h3>Definitely maybe, but we have concerns</h3>
+          <p>What if styling needs to persist but we abandon the framework?</p>
+        </section>
+
+        <section>
+          <h1>Global Scope Best Practices</h1>
           <ul>
-            <li>On a truly component-based, modular website this might eliminate global scope and specificity concerns</li>
-            <li>Mixing CSS into Javascript bothers many developers</li>
-            <li>Media queries are difficult in this context, and maintaining large/complex sites is difficult</li>
-            <li>Some form of global stylesheet may still be unavoidable</li>
-            <li>Expect to see more of this, particularly because of React's popularity</li>
+            <li>Normalize and Reset are unnecessary in a component-based system</li>
+            <li>Don't declare globally what you know will require overrides</li>
+            <li>Never count on a client to adhere to the template</li>
           </ul>
+          <pre>
+            <code class="hljs" data-trim contenteditable>
+// global link rules are a liability
+// you're just going to have to override this rule until Ragnarok
+a { color: blue; text-decoration: none;
+
+  &:hover { color: green; }
+}
+
+// this approach is more versatile and easily extended or overridden
+.inline-link { color: blue; text-decoration: none; }
+.footer-link { color: green; text-decoration: underline; }
+
+// global header rules are problematic
+// unless you're building a blog, these are going to be overridden
+h1, h2, h3, h4, h5, h6 { font-family: whatever; }
+h1 { font-size: 30px; }
+h2 { font-size: 24px; }
+h3 { font-size: 20px; }
+
+// this approach is more flexible and also more contextual
+.primary-header { font-family: whatever; font-size: 30px; }
+            </code>
+          </pre>
         </section>
 
         <section>
-          <h2>I argue that Global Scope is beneficial because it encourages creating repeatable patterns versus one-off solutions.</h2>
-        </section>
-
-        <section>
-          <h1>Proactively Managing Specificity</h1>
-          <ul>
-            <li>Specificity is a <strong>tool</strong> to be used carefully</li>
-            <li>Atomic or component-based web design is changing how we think specificity should be utilized
-              <ul>
-                <li>Older CSS guides on the internet have advocated higher specificity rules to target nested elements</li>
-                <li>Newer approaches advocate un-nested, class-driven, low specificity css modules</li>
-              </ul>
-            </li>
-            <li>Naming conventions / name-spacing can be utilized to make managing specificity much easier</li>
-          </ul>
-        </section>
-
-        <section>
-          <h1>Concerning Preprocessors</h1>
-          <ul>
-            <li>An inevitable addition to modern development stacks</li>
-            <li>Add features which move CSS closer to programming languages
-              <ul>
-                <li>Variables, extends, mixins, functions</li>
-                <li>Mixin libraries can mitigate browser prefixes</li>
-              </ul>
-            </li>
-            <li>If not used carefully, preprocessor features can lead to specificity wars and bloated files</li>
-          </ul>
-        </section>
-
-        <section>
-          <h1>CSS/SASS Methodology</h1>
+          <h1>Specificity</h1>
         </section>
 
         <section>
@@ -193,10 +196,24 @@ h1 {}
         </section>
 
         <section>
-          <h1>Enterprise-level Best Practices</h1>
+          <h1>Proactively Managing Specificity</h1>
+          <ul>
+            <li>Specificity is a <strong>tool</strong> to be used carefully</li>
+            <li>Atomic or component-based web design is changing how we think specificity should be utilized
+              <ul>
+                <li>Older CSS guides on the internet have advocated higher specificity rules to target nested elements</li>
+                <li>Newer approaches advocate un-nested, class-driven, low specificity css modules</li>
+              </ul>
+            </li>
+            <li>Naming conventions / name-spacing can be utilized to make managing specificity much easier</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Specificity Best Practices</h1>
           <p>Avoid using selectors that are tied to specific markup, even if specificity is low. If the markup changes, the styling breaks.</p>
           <ul>
-            <li>Element selectors &amp; Nesting</li>
+            <li>Element selectors</li>
           </ul>
           <pre>
             <code class="hljs" data-trim contenteditable>
@@ -215,7 +232,7 @@ h1 {}
         </section>
 
         <section>
-          <h1>Enterprise-level Best Practices</h1>
+          <h1>Specificity Best Practices</h1>
           <p>Using IDs for selectors is discouraged.</p>
           <ul>
             <li>No specific benefit over class selectors</li>
@@ -226,7 +243,7 @@ h1 {}
         </section>
 
         <section>
-          <h1>Enterprise-level Best Practices</h1>
+          <h1>Specificity Best Practices</h1>
           <ul>
             <li>Classes make for the best low-specificity selectors</li>
             <li>Don't be afraid of long class names</li>
@@ -243,9 +260,28 @@ h1 {}
         </section>
 
         <section>
+          <h1>Preprocessors (SASS)</h1>
+        </section>
+
+        <section>
+          <h1>Concerning Preprocessors</h1>
+          <ul>
+            <li>An inevitable addition to modern development stacks</li>
+            <li>Add features which move CSS closer to programming languages
+              <ul>
+                <li>Variables, extends, mixins, functions</li>
+                <li>Mixin libraries can mitigate browser prefixes</li>
+              </ul>
+            </li>
+            <li>If not used carefully, preprocessor features can lead to specificity wars and bloated files</li>
+          </ul>
+        </section>
+
+        <section>
           <section>
             <h1>SASS Best Practices</h1>
             <h3>Variables</h3>
+            <p>Variables should allow for significant change with little work</p>
             <ul>
               <li>Good variables describe their purpose rather than their value</li>
               <li>But value-oriented variables are useful as easily-remembered keywords</li>
@@ -496,7 +532,7 @@ $brand-color: orange;
         <section>
           <h1>Review</h1>
           <ul>
-            <li>Proactively utilize global scope and specificity as tools in your kit</li>
+            <li>Global scope and specificity are powerful tools for crafting portable, modular css</li>
             <li>Use classes for low-specificity styling rather than element selectors or IDs</li>
             <li>Avoid nesting to prevent markup-dependent styles</li>
             <li>Use SASS variables carefully to provide flexibility and maintainability</li>
