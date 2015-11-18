@@ -247,6 +247,7 @@ h1 {}
           <ul>
             <li>Classes make for the best low-specificity selectors</li>
             <li>Don't be afraid of long class names</li>
+            <li>Descriptive class names provide context in the stylesheet and in the markup</li>
           </ul>
           <pre>
             <code class="hljs" data-trim contenteditable>
@@ -527,6 +528,19 @@ $brand-color: orange;
               <li>Mixins allow us to more intentionally control global scope and specificity</li>
             </ul>
           </section>
+        </section>
+
+        <section>
+          <h1>BEM - Block__Element--Modifer</h1>
+                    <pre>
+            <code class="hljs" data-trim contenteditable>
+.accordion--vertical { some: styles; }
+.accordion--horizontal { some: styles; }
+.accordion__section { some: styles; }
+.accordion__title { some: styles; }
+.accordion__link { some: styles; }
+            </code>
+          </pre>
         </section>
 
         <section>
