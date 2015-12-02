@@ -53,6 +53,9 @@ html:-webkit-full-screen-ancestor {
 html:-moz-full-screen-ancestor {
   background-color: inherit; }
 
+.centered {
+  text-align: center; }
+
 /*********************************************
  * VIEW FRAGMENTS
  *********************************************/

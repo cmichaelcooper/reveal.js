@@ -40,12 +40,8 @@
 
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
-        <section>
+        <section class="centered">
           <h1>CSS: Methodology &amp; Strategy</h1>
-        </section>
-
-        <section>
-          <h1>And now, My Evil Plan...</h1>
         </section>
 
         <section>
@@ -64,7 +60,7 @@
           </ul>
         </section>
 
-        <section>
+        <section class="centered">
           <h1>CSS is Difficult</h1>
           <h3>We have some challenges to overcome</h3>
         </section>
@@ -79,7 +75,7 @@
                 <li>Browser dev tools display style overrides, but don't calculate specificity</li>
               </ul>
             </li>
-            <li>Styles must be overwritten (added) to be removed (subtracted)</li>
+            <li>CSS is an <strong><em>additive</em></strong> discipline - must add overrides to remove unwanted styles</li>
           </ul>
         </section>
 
@@ -93,7 +89,7 @@
         </section>
 
         <section>
-          <h1>SASS Adds Complexity</h1>
+          <h1>Preprocessors (SASS) Add Complexity</h1>
           <ul>
             <li>Nesting can result in gross selectors and specificity overload</li>
             <li>Variables are easy to misuse</li>
@@ -101,7 +97,7 @@
           </ul>
         </section>
 
-        <section>
+        <section class="centered">
           <h1>Global Scope in CSS</h1>
         </section>
 
@@ -128,6 +124,10 @@
           <h1>Is Javascript The Future?</h1>
           <h3>Definitely maybe, but we have concerns</h3>
           <p>What if styling needs to persist but we abandon the framework?</p>
+        </section>
+
+        <section class="centered">
+          <h1>Differentiate and Embrace Global Scope in CSS</h1>
         </section>
 
         <section>
@@ -163,7 +163,7 @@ h3 { font-size: 20px; }
           </pre>
         </section>
 
-        <section>
+        <section class="centered">
           <h1>Specificity</h1>
         </section>
 
@@ -260,7 +260,7 @@ h1 {}
           </pre>
         </section>
 
-        <section>
+        <section class="centered">
           <h1>Preprocessors (SASS)</h1>
         </section>
 
@@ -390,7 +390,8 @@ h1 { color: $title-color; } // Yes, because it now indicates purpose
             </ul>
             <pre>
               <code class="hljs" data-trim contenteditable>
-// This is repetitive and can scale out of control
+// This is repetitive and can get out of control as soon as
+// the client doesn't want those links to be consistently styled
 div.content {
   h2 {
     a { color: red; }
@@ -471,7 +472,7 @@ $brand-color: orange;
 
         <section>
           <section>
-            <h1>SASS Best Practices>
+            <h1>SASS Best Practices</h1>
             <h3>Extends</h3>
             <p>An example of what @extend does</p>
             <pre>
@@ -531,16 +532,28 @@ $brand-color: orange;
         </section>
 
         <section>
-          <h1>BEM - Block__Element--Modifer</h1>
-                    <pre>
-            <code class="hljs" data-trim contenteditable>
+          <section class="centered">
+            <h1>BEM - Block__Element--Modifer</h1>
+          </section>
+          <section>
+            <h2>Naming convention for highly contextual selectors</h2>
+            <ul>
+              <li>All modules are made of Blocks, Elements or Modifiers</li>
+            </ul>
+          </section>
+          <section>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+// Underscores AND hyphens in one selector!?
+// No one can live at that speed!
 .accordion--vertical { some: styles; }
 .accordion--horizontal { some: styles; }
 .accordion__section { some: styles; }
 .accordion__title { some: styles; }
 .accordion__link { some: styles; }
-            </code>
-          </pre>
+              </code>
+            </pre>
+          </section>
         </section>
 
         <section>
