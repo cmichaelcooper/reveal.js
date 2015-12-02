@@ -531,16 +531,66 @@ $brand-color: orange;
         </section>
 
         <section>
-          <h1>BEM - Block__Element--Modifer</h1>
-                    <pre>
-            <code class="hljs" data-trim contenteditable>
-.accordion--vertical { some: styles; }
-.accordion--horizontal { some: styles; }
-.accordion__section { some: styles; }
-.accordion__title { some: styles; }
-.accordion__link { some: styles; }
-            </code>
-          </pre>
+          <section>
+            <h1>BEM - Block__Element--Modifer</h1>
+            <h3>Name-spacing solution for modular CSS</h3>
+          </section>
+
+          <section>
+            <h1>BEM Conventions</h1>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+// Block
+.person { some: styles; }
+
+// Element
+.person__hand { some: styles; }
+
+// Modifier
+.person__hand--broken { some: styles; }
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h1>BEM Markup</h1>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+<div class="person">
+    <div class="person__hand">
+      <p>stuff</p>
+    </div>
+    <div class="person__hand--broken">
+      <p>other stuff</p>
+    </div>
+</div>
+
+<div class="person--broken">
+    <p>sad stuff</p>
+</div>
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h1>BEM &amp; SASS</h1> 
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+// Block
+.person {
+  some: styles;
+
+  @at-root &__hand {
+    some: styles;
+
+    @at-root &--broken {
+      some: styles;
+    }
+  }
+}
+              </code>
+            </pre>
+          </section>
         </section>
 
         <section>
