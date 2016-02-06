@@ -90,3 +90,11 @@ div.accordion section:target h2.alt a.red { color: red; } /* 0.0.4.4 */
 /*Set position of the number on the slide*/
 .vertical section:after{ top:-60px;left:810px;}
 .vertical section:target:after{ left:-9999px;}
+
+.code {
+  background-color: #eee;
+  box-sizing: border-box;
+  font-family: monospace;
+  font-size: 13px;
+  padding: 20px;
+}
