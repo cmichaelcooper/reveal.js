@@ -1,100 +1,322 @@
-.wrapper { width: 960px; margin: 100px auto; }
+.wrapper {
+  width: 960px;
+  margin: 100px auto;
+}
+
 
 /*Define Accordion box*/
-.accordion { width:830px; overflow:hidden; margin:10px auto; color:#474747; background:#414141; padding:10px; }
+
+.accordion {
+  width: 830px;
+  overflow: hidden;
+  margin: 10px auto;
+  color: #474747;
+  background: #414141;
+  padding: 10px;
+}
+
 
 /*General Accordion****************************************************************************/
+
+
 /*Set style of open slide*/
-.accordion section:target { background:#FFF; padding:10px;}
-.accordion section:target:hover { background:#FFF; }
-.accordion section:target h2 {width:100%;}
-.accordion section:target p {display:block;}
-.accordion section h2 a{padding:8px 10px;display:block; font-size:16px; font-weight:normal;color:#eee; text-decoration:none; }
+
+.accordion section:target {
+  background: #FFF;
+  padding: 10px;
+}
+
+.accordion section:target:hover {
+  background: #FFF;
+}
+
+.accordion section:target h2 {
+  width: 100%;
+}
+
+.accordion section:target p {
+  display: block;
+}
+
+.accordion section h2 a {
+  padding: 8px 10px;
+  display: block;
+  font-size: 16px;
+  font-weight: normal;
+  color: #eee;
+  text-decoration: none;
+}
 
 
 /* BASE STYLE */
-.accordion section:target h2 a{ color:#333; padding:0;} /* 0.0.2.3. */
+
+.accordion section:target h2 a {
+  color: #333;
+  padding: 0;
+}
+
+
+/* 0.0.2.3. */
+
 
 /* OVERRIDES */
-.red { color: red; } /* 0.0.1.0 */
-a.red { color: red; } /* 0.0.1.1 */
-h2 a.red { color: red; } /* 0.0.1.2 */
-section h2 a.red { color: red; } /* 0.0.1.3 */
-section:target h2 a.red { color: red; } /* 0.0.2.3 */
 
-div.accordion section:target h2.alt a.red { color: red; } /* 0.0.4.4 */
+.red {
+  color: red;
+}
 
-#red { color: red; } /* 0.1.0.0 */
 
-.accordion #red { color: red; } /* 0.1.1.0 */
+/* 0.0.1.0 */
+
+a.red {
+  color: red;
+}
+
+
+/* 0.0.1.1 */
+
+h2 a.red {
+  color: red;
+}
+
+
+/* 0.0.1.2 */
+
+section h2 a.red {
+  color: red;
+}
+
+
+/* 0.0.1.3 */
+
+section:target h2 a.red {
+  color: red;
+}
+
+
+/* 0.0.2.3 */
+
+div.accordion section:target h2.alt a.red {
+  color: red;
+}
+
+
+/* 0.0.4.4 */
+
+#red {
+  color: red;
+}
+
+
+/* 0.1.0.0 */
+
+.accordion #red {
+  color: red;
+}
+
+
+/* 0.1.1.0 */
 
 
 /*set style of closed slide*/
-.accordion section{ float:left; overflow:hidden; color:#333; cursor:pointer; background: #333; margin:3px; }
-.accordion section:hover {background:#444;}
-.accordion section p { display:none; }
-.accordion section:after{position:relative;font-size:24px;color:#000;font-weight:bold;}
-.accordion section:nth-child(1):after{content:'1';}
-.accordion section:nth-child(2):after{content:'2';}
-.accordion section:nth-child(3):after{content:'3';}
-.accordion section:nth-child(4):after{content:'4';}
-.accordion section:nth-child(5):after{content:'5';}
-/*End General Accordion****************************************************************************/
 
-/*Horizontal Accordion *********************************************************************/
-.horizontal section{ width:5%; height:250px; 
-  -moz-transition:width 0.2s ease-out; 
-  -webkit-transition:width 0.2s ease-out;
-    -o-transition:width 0.2s ease-out;
-  -ms-transition:width 0.2s ease-out;
-    transition:width 0.2s ease-out;
+.accordion section {
+  float: left;
+  overflow: hidden;
+  color: #333;
+  cursor: pointer;
+  background: #333;
+  margin: 3px;
 }
 
+.accordion section:hover {
+  background: #444;
+}
+
+.accordion section p {
+  display: none;
+}
+
+.accordion section:after {
+  position: relative;
+  font-size: 24px;
+  color: #000;
+  font-weight: bold;
+}
+
+.accordion section:nth-child(1):after {
+  content: '1';
+}
+
+.accordion section:nth-child(2):after {
+  content: '2';
+}
+
+.accordion section:nth-child(3):after {
+  content: '3';
+}
+
+.accordion section:nth-child(4):after {
+  content: '4';
+}
+
+.accordion section:nth-child(5):after {
+  content: '5';
+}
+
+
+/*End General Accordion****************************************************************************/
+
+
+/*Horizontal Accordion *********************************************************************/
+
+.horizontal section {
+  width: 5%;
+  height: 250px;
+  -moz-transition: width 0.2s ease-out;
+  -webkit-transition: width 0.2s ease-out;
+  -o-transition: width 0.2s ease-out;
+  -ms-transition: width 0.2s ease-out;
+  transition: width 0.2s ease-out;
+}
+
+
 /*Position the number of the slide*/
-.horizontal section:after{top:140px;left:15px;}
+
+.horizontal section:after {
+  top: 140px;
+  left: 15px;
+}
+
 
 /*Header of closed slide*/
-.horizontal section h2 { 
-  -webkit-transform:rotate(90deg);
-  -moz-transform:rotate(90deg);
+
+.horizontal section h2 {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
   -o-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
-  width:240px; position:relative; left:-100px; top:85px;
-} 
+  width: 240px;
+  position: relative;
+  left: -100px;
+  top: 85px;
+}
+
 
 /*On mouse over open slide*/
-.horizontal :target{ width:73%;height:230px; }
-.horizontal :target h2{ top:0px;left:0;
-  -webkit-transform:rotate(0deg);
-  -moz-transform:rotate(0deg);
+
+.horizontal:target {
+  width: 73%;
+  height: 230px;
+}
+
+.horizontal:target h2 {
+  top: 0px;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
-  transform: rotate(0deg); 
+  transform: rotate(0deg);
 }
+
+
 /*End Horizontal Accordion *********************************************************************/
 
-/*Vertical Accordion *************************************************************************/
-.vertical section{ width:100%; height:40px;
-  -webkit-transition:height 0.2s ease-out;
-  -moz-transition:height 0.2s ease-out;
-    -o-transition:height 0.2s ease-out;
-  -ms-transition:height 0.2s ease-out;
-    transition:height 0.2s ease-out;
-}
-/*Set height of the slide*/
-.vertical :target{ height:250px; width:97%; }
 
-.vertical section h2 { position:relative; left:0; top:-15px; }
+/*Vertical Accordion *************************************************************************/
+
+.vertical section {
+  width: 100%;
+  height: 40px;
+  -webkit-transition: height 0.2s ease-out;
+  -moz-transition: height 0.2s ease-out;
+  -o-transition: height 0.2s ease-out;
+  -ms-transition: height 0.2s ease-out;
+  transition: height 0.2s ease-out;
+}
+
+
+/*Set height of the slide*/
+
+.vertical:target {
+  height: 250px;
+  width: 97%;
+}
+
+.vertical section h2 {
+  position: relative;
+  left: 0;
+  top: -15px;
+}
+
 
 /*Set position of the number on the slide*/
-.vertical section:after{ top:-60px;left:810px;}
-.vertical section:target:after{ left:-9999px;}
+
+.vertical section:after {
+  top: -60px;
+  left: 810px;
+}
+
+.vertical section:target:after {
+  left: -9999px;
+}
 
 .code {
   background-color: #eee;
   box-sizing: border-box;
-  font-family: monospace;
+  font-family: "Courier New", monospace;
   font-size: 13px;
   padding: 20px;
+}
+
+
+/*Media Object *****************************************************************************/
+
+/* Structure */
+.media {
+  width: 100%;
+}
+
+.media,
+.bd {
+  overflow: hidden;
+  _overflow: visible;
+  zoom: 1;
+}
+
+.media .img {
+  float: left;
+}
+
+.media .img img {
+  display: block;
+}
+
+.media .imgExt {
+  float: right;
+}
+
+/* Skin */
+.attribution {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 0 auto 20px auto;
+}
+
+/* Container */
+.media .bd {
+  font-size: 12px;
+  padding: 10px;
+}
+
+/* Content */
+.red {
+  color: red;
+  margin: 0;
+}
+
+.blue {
+  color: blue;
 }
